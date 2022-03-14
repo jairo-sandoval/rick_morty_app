@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import LocationInfo from './components/LocationInfo';
+import getLocations from './petitions/getLocations';
+import { useEffect, useState } from 'react'
+import ResidentList from './components/ResidentList';
+import Searchbox from './components/Searchbox';
 
 function App() {
+  const [ location, setLocation ] = useState({})
+
+    useEffect(() =>{
+        const random = Math.floor(Math.random() * 126) + 1
+        const locationPromise = getLocations(random)
+
+        locationPromise.then(res => {
+            setLocation(res.data)
+        })
+    }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Searchbox setLocation={setLocation}/>
+      <LocationInfo location={location} />
+      <ResidentList location={location}/>
+      
     </div>
   );
 }
+
 
 export default App;
