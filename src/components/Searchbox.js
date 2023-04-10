@@ -45,8 +45,8 @@ const Searchbox = ({setLocation, setIsFindLocation, setResultsRendering}) => {
                         count += 1
                         if(count < 6){
                             return <li key={result.id} onClick={() => setLocation(result) }>{result.name}</li>
-                                
-                        }                
+                        }         
+                        return <></>       
                     })
                 }
                 </ul>
