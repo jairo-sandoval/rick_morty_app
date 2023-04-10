@@ -3,7 +3,8 @@ import axios from 'axios'
 
 const ResidentInfo = ({resident}) => {
     const [ residentInfo, setResidentInfo ] = useState({})
-
+    console.log(resident)
+    
     useEffect(() => {
         axios.get(resident)
             .then(res => {
@@ -11,7 +12,7 @@ const ResidentInfo = ({resident}) => {
                 console.log(res.data)
             })
 
-    }, [])
+    }, [resident])
 
     const changeStatuslife = () => {
         if(residentInfo.status === 'unknown'){
@@ -31,11 +32,9 @@ const ResidentInfo = ({resident}) => {
                 <h3> {residentInfo.status}</h3>
 
             </div>
-            <img src={residentInfo.image} />
+            <img src={residentInfo.image} alt={residentInfo.image}/>
             <div className="info_resident">
-                
                 <h2>{residentInfo.name}</h2>
-
                 <div>
                     <p>gender</p>
                     <h3>{residentInfo.gender}</h3>
