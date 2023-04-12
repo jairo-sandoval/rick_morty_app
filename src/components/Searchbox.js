@@ -12,7 +12,6 @@ const Searchbox = ({setLocation, setIsFindLocation, setResultsRendering}) => {
         getInfoSearching.then(res => {
             setResults(res.data.results)
         })
-
     }
 
     const submitLocations = (e) =>{

@@ -1,8 +1,11 @@
 import React from 'react';
 
-const LocationInfo = ({location}) => {
+const LocationInfo = ({location, getRandomLocation}) => {
     return (
-        <div className="card_location">
+        <div 
+            className="card_location"
+            onClick={getRandomLocation}
+        >
             <h2>{location.name}</h2>
             <div className="container_location">
                 <div className="info_location">
@@ -18,9 +21,6 @@ const LocationInfo = ({location}) => {
                     <p>{location.residents?.length}</p>
                 </div>
             </div>
-            
-
-            
         </div>
     );
 };
